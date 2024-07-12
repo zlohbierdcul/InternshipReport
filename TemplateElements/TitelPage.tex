@@ -1,0 +1,66 @@
+
+% setup page dimensions for titlepage
+\newgeometry{left=2.4cm,right=2.4cm,bottom=2.5cm,top=2cm}
+
+
+% first titlepage
+\pagestyle{empty}
+
+\vspace*{-2cm}
+\begin{figure}[H]
+	\setlength{\fboxrule}{0pt}
+	\fbox{\begin{minipage}[t!]{150pt}
+		\includegraphics[width=150pt]{TemplateElements/HSMALogo.png}
+	\end{minipage}}
+	\hfill
+	\fbox{\begin{minipage}[t!]{150pt}
+		\includegraphics[width=150pt]{TemplateElements/sovantaLogo.jpg}
+	  \end{minipage}}
+\end{figure}
+
+
+\begin{center}
+
+\vspace{1cm}
+
+\begin{minipage}[t][5cm][s]{\textwidth}%
+\centering
+\Huge{{\color{green}{\fontsize{24}{30} \selectfont \workTitle\\}}}
+\vspace{0.5cm}
+\LARGE{{\color{green}{\fontsize{16}{24} \selectfont \subTitle\\}}}
+\end{minipage}
+
+Vorgelegt von:\\ 
+\fontsize{15pt}{15pt}\selectfont
+\textbf{\studentFirstName\ \studentLastName} \\
+\fontsize{11pt}{15pt}\selectfont
+Matr.Nr.: \studentId \\
+\courseOfStudy
+  
+\vspace{1.3cm}
+    	\fontsize{11pt}{15pt}\selectfont \universityName\\ 
+	\faculty \\
+
+\vspace{1.3cm}
+    	\fontsize{11pt}{15pt}\selectfont Unternehmen: \\
+		\textbf{sovanta AG}\\ 
+		Mittermaierstraße 31 \\
+		69115 Heidelberg
+
+\vspace{1cm}
+
+\begin{tabular}{lll}
+	Betreuer/in: & \advisorPreTitle\ \advisoFirstName\ \advisorLastName \advisorPosTitle\\
+\end{tabular}
+
+\vspace{1cm}
+
+\begin{tabular}{lll}
+	\fontsize{11pt}{15pt}\selectfont Praktikumszeitraum: & 01.03.2024 - 26.07.2024\\
+	Fertigstellung: & \dateDay.\dateMonth.\dateYear
+\end{tabular}
+
+
+\end{center}
+
+\restoregeometry
