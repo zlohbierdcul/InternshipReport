@@ -163,7 +163,43 @@
 
 % -- Settings für Code abbildungen
 \usepackage{listings,lstautogobble}
-\lstset{backgroundcolor=\color{light-gray},frame=single, framerule=0pt, showspaces=false, showtabs=false, numbers=left, numbersep=5pt, breaklines=false, autogobble=true, language=C++}
+
+\definecolor{lightgray}{rgb}{.9,.9,.9}
+\definecolor{darkgray}{rgb}{.4,.4,.4}
+\definecolor{purple}{rgb}{0.65, 0.12, 0.82}
+
+\lstdefinelanguage{JavaScript}{
+  keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break, interface, log, let, const, class},
+  keywordstyle=\color{blue}\bfseries,
+  ndkeywords={export, boolean, throw, implements, import, this, number, string},
+  ndkeywordstyle=\color{darkgray}\bfseries,
+  identifierstyle=\color{black},
+  sensitive=false,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\color{red}\ttfamily,
+  morestring=[b]',
+  morestring=[b]"
+}
+
+\lstset{
+   language=JavaScript,
+   backgroundcolor=\color{lightgray},
+   extendedchars=true,
+   basicstyle=\footnotesize\selectfont,
+   showstringspaces=false,
+   showspaces=false,
+   frame=leftline,
+   numbers=left,
+   numberstyle=\footnotesize,
+   numbersep=9pt,
+   tabsize=2,
+   breaklines=true,
+   showtabs=false,
+   captionpos=b,
+   autogobble=true
+}
 
 % Setze arial font
 \usepackage[scaled]{helvet}
@@ -244,7 +280,7 @@
 
 % Restart of the page numbering, Numbers [arabic], Roman numbers [roman,Roman], letters [alph,Alph]
 \pagenumbering{Roman}
-   
+
 \pagestyle{plain}
 \include{TemplateElements/Sichtvermerk}
 
@@ -269,7 +305,7 @@
 \include{Chapters/02_Wochenberichte}
 \include{Chapters/03_Projektbericht}
 
-\pagestyle{plain} 
+\pagestyle{plain}
 
 % References
 \newpage

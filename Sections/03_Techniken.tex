@@ -1,5 +1,81 @@
 \section{Technologische Grundlagen}
 \subsection[Einführung in TypeScript]{Einführung in TypeScript}
+TypeScript ist eine Open-Source-Programmiersprache, welche erstmals 2012 von Microsoft veröffentlicht wurde.
+TypeScript ist ein Superset von JavaScript und erweitert JavaScript um eine statische Typisierung und andere erweiterte Funktionen.
+Das Ziel von TypeScript ist es, die Entwicklung von großer und komplexer JavaScript-Anwendungen einfacher und sicherer zu machen.
+\subsubsection[Warum TypeScript?]{Warum TypeScript?}
+JavaScript ist dynamisch typisiert, was bedeutet, dass Variablen während der Laufzeit jeden beliebigen Typ annehmen können. Das kann zu Laufzeitfehlern führen, welche schwer zu debuggen sind.
+In TypeScript wird dieses Problem gelöst, indem es den Entwicklern ermöglicht, Typen explizit zu definieren, was mehrere Vorteile bietet:
+
+\begin{itemize}
+    \item \textbf{Fehlererkennung zur Entwicklungszeit:} \\   Durch die statische Typisierung werden viele Fehler bereits während dem Schreiben des Codes erkannt und nicht erst zur Laufzeit des Programms.
+    \item \textbf{Verbesserte IDE-Unterstützung:} \\    Die Entwicklungsumgebung wird von TypeScript durch eine Autovervollständigung, Refactoring-Tools und IntelliSense erheblich verbessert.
+    \item \textbf{Bessere Dokumentation:} \\     Durch die Typenannotation ist TypeScript Code selbstdokumentierend, was die Verständlichkeit und Wartbarkeit erhöht.
+    \item \textbf{Skalierbarkeit:} \\   Die Entwicklung und Wartung großer Codebasen wird durch klare Typdefinitionen und Modulunterstützungen verbessert.  
+\end{itemize}
+
+\newpage
+
+\subsubsection[Grundlegende Konzepte]{Grundlegende Konzepte}
+\begin{itemize}
+    \item \textbf{Typen:} \\
+     TypeScript erweitert JavaScript um ein starkes Typensystem. Einiger der grundlegenden Typen sind:
+     \begin{lstlisting}
+        var isDone: boolean = true;
+        var count: number = 42;
+        var name: string = "Alice";
+        var list: number[] = [1, 2, 3];
+     \end{lstlisting}
+    \item \textbf{Interfaces:} \\
+    Interfaces definieren die Struktur eines Objekts und können sicherstellen, dass Objekte diese Form einhalten.
+    \begin{lstlisting}
+        interface Person {
+            firstName: string;
+            lastName: string;
+        }
+
+        function greet(person: Person) {
+            return "Hello, " + person.firstName + " " + person.lastName;
+        }
+
+        let user = { firstName: "Jane", lastName: "Doe" };
+        console.log(greet(user));   // "Hello, Jane Doe"
+    \end{lstlisting}
+    \item \textbf{Klassen:} \\
+    TypeScript unterstützt objektorientierte Programmierung durch Klassen, was Vererbung, Kapselung und andere OOP-Konzepte ermöglicht.
+    \begin{lstlisting}
+        class Animal {
+            name: string;
+
+            constructor(name: string) {
+                this.name = name;
+            }
+            move(distance: number = 0) {
+                console.log(`${this.name} moved ${distance}m.`);
+            }
+        }
+
+        class Dog extends Animal {
+            bark() {
+                console.log("Woof! Woof!");
+            }
+        }
+
+        let dog = new Dog("Buddy");
+        dog.bark();
+        dog.move(10);
+    \end{lstlisting}
+    \item \textbf{Generics:} \\
+    Generics ermöglichen die Erstellung wiederverwendbarer Komponenten, die mit verschiedenen Typen arbeiten können.
+    \begin{lstlisting}
+        function identity<T>(arg: T): T {
+            return arg;
+        }
+
+        let output1 = identity<string>("myString");
+        let output2 = identity<number>(100);
+    \end{lstlisting}
+\end{itemize}
 
 \subsection[Unterschiede zwischen JavaScript und TypeScript]{Unterschiede zwischen JavaScript und TypeScript}
 
