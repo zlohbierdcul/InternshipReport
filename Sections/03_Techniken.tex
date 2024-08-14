@@ -20,7 +20,7 @@ In TypeScript wird dieses Problem gelöst, indem es den Entwicklern ermöglicht,
 \begin{itemize}
     \item \textbf{Typen:} \\
      TypeScript erweitert JavaScript um ein starkes Typensystem. Einiger der grundlegenden Typen sind:
-     \begin{lstlisting}
+     \begin{lstlisting}[caption={Beispiel: Typen in TypeScript}]
         var isDone: boolean = true;
         var count: number = 42;
         var name: string = "Alice";
@@ -28,7 +28,7 @@ In TypeScript wird dieses Problem gelöst, indem es den Entwicklern ermöglicht,
      \end{lstlisting}
     \item \textbf{Interfaces:} \\
     Interfaces definieren die Struktur eines Objekts und können sicherstellen, dass Objekte diese Form einhalten.
-    \begin{lstlisting}
+    \begin{lstlisting}[caption={Beispiel: Interfaces in TypeScript}]
         interface Person {
             firstName: string;
             lastName: string;
@@ -43,7 +43,7 @@ In TypeScript wird dieses Problem gelöst, indem es den Entwicklern ermöglicht,
     \end{lstlisting}
     \item \textbf{Klassen:} \\
     TypeScript unterstützt objektorientierte Programmierung durch Klassen, was Vererbung, Kapselung und andere OOP-Konzepte ermöglicht.
-    \begin{lstlisting}
+    \begin{lstlisting}[caption={Beispiel: Klassen in TypeScript}]
         class Animal {
             name: string;
 
@@ -67,7 +67,7 @@ In TypeScript wird dieses Problem gelöst, indem es den Entwicklern ermöglicht,
     \end{lstlisting}
     \item \textbf{Generics:} \\
     Generics ermöglichen die Erstellung wiederverwendbarer Komponenten, die mit verschiedenen Typen arbeiten können.
-    \begin{lstlisting}
+    \begin{lstlisting}[caption={Beispiel: Generics in TypeScript}]
         function identity<T>(arg: T): T {
             return arg;
         }
@@ -80,3 +80,87 @@ In TypeScript wird dieses Problem gelöst, indem es den Entwicklern ermöglicht,
 \subsection[Unterschiede zwischen JavaScript und TypeScript]{Unterschiede zwischen JavaScript und TypeScript}
 
 \subsection[Vorstellung weiterer verwendeter Technologien und Frameworks]{Vorstellung weiterer verwendeter Technologien und Frameworks}
+\subsubsection[Das SAP UI5 Framework]{Das SAP UI5 Framework}
+SAP UI5 ist ein auf JavaScript basierendes UI-Framework, um plattformübergreifende Webanwendungen für Unternehmen effizient zu entwickeln.
+
+Es wurde 2011 von SAP entwicket und wird bis heute weiterentwickelt. Seit 2013 gibt es von dem Framework auch eine open-source variante namens OpenUI5. Der Hauptunterschied der beiden Frameworks ist allerdings nur die Lizenz.
+
+Das Hauptziel des Frameworks ist es eine konsistente, reaktionsschnelle und intuitive Benutzererfahrung über alle SAP-Anwendungen hinweg zu bieten, die sowohl auf Desktops als auch auf mobilen Geräten reibungslos funktioniert.
+
+\subsubsection[Grundlegende Architektur von SAP UI5]{Grundlegende Architektur von SAP UI5}
+SAP UI5 basiert auf der Model-View-Controller (MVC) Architektur, ein gängiges Entwurfsmuster, welches eine klare Trennung der verschiedenen Anwendungskomponenten gewährleistet:
+\begin{itemize}
+    \item \textbf{Model:} \\
+    Das Model repräsentiert die Datenstruktur und -logik der Anwendung. Es beinhaltet die Daten, welche aus unterschiedlichen Quellen geladen werden können, wie zum Beispiel OData-Services, JSON-Dateien oder anderen APIs.
+    \item \textbf{View:} \\
+    Die View beschreibt das Layout und Design der Benutzeroberfläche. SAP UI5 bietet verschiedene Ansätze für die Definition der Views, darunter XML, HTML, JSON und JavaScript.
+    Der beliebteste Ansatz sind die XML-Views, da sie die Strukturierung und Wiederverwendbarkeit fördern.
+    \item \textbf{Constroller:} \\
+    Der Coltroller verarbeitet die Benutzereingaben und steuert die Geschäftslogik.
+    Er dient als Vermittler zwischen dem Model und der View, indem er die Daten abruft und an die View weiterleitet oder Benutzereingaben verarbeitet und entsprechende Aktionen 
+\end{itemize}
+
+Diese Trennung ermöglicht eine bessere Wartbarkeit und Skalierbarkeit von Anwendungen und erleichtert die Zusammenarbeit in Entwicklerteams.
+
+\subsubsection[Vorteile und Schlüsselmerkmale von SAP UI5]{Vorteile und Schlüsselmerkmale von SAP UI5}
+SAP UI5 bietet eine Reihe von Vroteilen und Funktionen, die es zu einem leistungsstarken Framework für die Entwicklung von Unternehmensanwendungen machen:
+
+\begin{itemize}
+    \item \textbf{Responsive Design:} \\
+    Durch SAP UI5 werden Anwendungen automatisch an verschiedene Bildschirmgrößen angepasst, wodurch sie auf Desktop-Computern und mobilen Geräten gut funktionieren.
+    \item \textbf{UI-Komponenten:} \\
+    Das Framework bietet eine umfangreiche Bibliothek von vorgefertigten UI-Komponenten wie Tabellen, Diagrammen, Formularen und vielem mehr.
+    Diese Komponenten sind dafür ausgelegt, eine einheitliche Benutzererfahrung zu gewährleisten und Anwendungen effizienter entwickeln zu können.
+    \item \textbf{Internationalisierung und Lokalisierung:} \\
+    Mit SAP UI5 können Anwendung mithilfe des sogenannten i18n-Models an verschiedene Sprachen und Regionen angepasst werden. 
+    \item \textbf{Integration mit SAP-Systemen:} \\
+    Das Framework ist speziell darauf ausgelegt, nahtlos mit SAP-Backend-Systemen zu arbeiten, insbesondere mit OData-Services.
+\end{itemize}
+
+\subsubsection[SAP UI5 in Verbindung mit TypeScript]{SAP UI5 in Verbindung mit TypeScript}
+SAP UI5 in TypeScript ist eine relativ neue Erweiterung zu UI5, die 2021 von SAP veröffentlicht wurde und immer weiter verbessert wird.
+Es bringt alle Vorteile die TypeScript gegenüber JavaScript mitbringt zu UI5, was die Entwicklung der Anwendungen stark verbessert.
+
+\subsubsection[Unterschied zwischen JavaScript und TypeScript in UI5 anhand eines Beispiels]{Unterschied zwischen JavaScript und TypeScript in UI5 anhand eines Beispiels}
+Im Folgenden werden die Unterschiede eines UI5 BaseControllers in JavaScript und TypeScript gezeigt. 
+
+\textbf{JavaScript:} \\
+In JavaScript werden UI5 Controller über eine interne Funktion definiert. 
+Diese erwartet ein Array mit Pfaden zu Controllern, die importiert werden sollen, und einer Callback-Funktion, welche die Funktktionalität des Controllers defniert.
+\begin{lstlisting}[caption={Beispiel: JavaScript BaseController.js}]
+    sap.ui.define([
+        "sap/ui/core/mvc/Controller"
+    ], function (Controller) {
+        "use strict";
+
+        return Controller.extend("de.example.controller.BaseController", {
+            getRouter: function () {
+                return this.getOwnerComponent().getRouter();
+            },
+            getModel: function (sName) {
+                return this.getView().getModel(sName);
+            }
+        })
+    })
+\end{lstlisting}
+
+\textbf{TypeScript:} \\
+Anders als in JavaScript werden Controller in TypeScript über Klassen definiert. 
+Damit der TypeScript Kompiller die Klasse jedoch in einen UI5 Controller konvertieren kann, muss ein Kommentar mit dem passenden namespace hinzugefügt werden.
+Controller können mit einem TypeScript Import importiert werden.
+\begin{lstlisting}[caption={Beispiel: TypeScript BaseController.ts}, ]
+    import Controller from "sap/ui/core/mvc/Controller";
+
+    /**
+     * @namespace de.example.controller
+     */
+    export default class BaseController extends Controller {
+        public getRouter(): Router {
+            return (this.getOwnerComponent() as UIComponent).getRouter();
+        }
+
+        public getModel(name?: string): Model {
+            this.getView().getModel(name);
+        }
+    }
+\end{lstlisting}
