@@ -1,4 +1,163 @@
 \section{Anforderungen}
 Dieses Kapitel befasst sich mit den Anforderungen an das Admin-UI, welche von dem Kunden zu Beginn des Projektes bereits verfasst wurden.
+Die Funktionalität aller Seiten des Admin-UIs wurden in diesen Anforderungen festgehalten und dienten dann ebenfalls als Aktzeptanzkriterien.
 
-\subsection[Anforderungen]{Anforderungen}
+\subsection[A1 - Reaktionszeit der Anwendung]{A1 - Reaktionszeit der Anwendung}
+
+\begin{center}
+    \begin{tabular}{ |p{0.2\linewidth}|p{0.8\linewidth}| } 
+        \hline
+        \rowcolor{lightgray}
+        \textbf{A1} & \textbf{Reaktionszeit der Anwendung} \\
+        \hline
+        Nicht-Funktional &  Die Anwendung soll in einer angemessenen Zeit antworten\\ 
+        \hline
+    \end{tabular}
+    \captionof{table}{Anforderung A1 - Reaktionszeit der Anwendung \label{Tab:Tcr}}
+\end{center}
+
+\subsection[A2 - Sprache der Anwendung]{A2 - Sprache der Anwendung}
+
+\begin{center}
+    \begin{tabular}{ |p{0.2\linewidth}|p{0.8\linewidth}| } 
+        \hline
+        \rowcolor{lightgray}
+        \textbf{A2} & \textbf{Spache der Anwendung} \\
+        \hline
+        Nicht-Funktional &  Die Anwendung soll je nach Standort oder Einstellung des Nutzers in Deutsch oder Englisch angezeigt werden.\\ 
+        \hline
+    \end{tabular}
+    \captionof{table}{Anforderung A2 - Spache der Anwendung \label{Tab:Tcr}}
+\end{center}
+
+\subsection[A3 - Inteligente Vorschläge für Eingabefelder]{A3 - Inteligente Vorschläge für Eingabefelder}
+
+\begin{center}
+    \begin{tabular}{ |p{0.2\linewidth}|p{0.8\linewidth}| } 
+        \hline
+        \rowcolor{lightgray}
+        \textbf{A3} & \textbf{Inteligente Vorschläge für Eingabefelder} \\
+        \hline
+        Funktional & Eingabefelder sollen dem Nutzer Vorschläge anhand der bereits eingegeben Zeichen machen. 
+        
+        Die Vorschläge sollen sich bei der Eingabe oder Löschung von Zeichen aktualisieren. \\ 
+        \hline
+    \end{tabular}
+    \captionof{table}{Anforderung A4 - Inteligente Vorschläge für Eingabefelder \label{Tab:Tcr}}
+\end{center}
+
+\subsection[A4 - Eingabefelder der Seite zum Löschen der Kaufprojekte]{A4 - Eingabefelder der Seite zum Löschen der Kaufprojekte}
+
+\begin{center}
+    \begin{tabular}{ |p{0.2\linewidth}|p{0.8\linewidth}| } 
+        \hline
+        \rowcolor{lightgray}
+        \textbf{A4} & \textbf{Eingabefelder der Seite zum Löschen der Kaufprojekte} \\
+        \hline
+        Funktional & Die Seite hat ein Eingabefeld, in dem eine oder mehrere ProjektIDs, die gelöscht werden sollen, eingetragen werden können. Das Feld ist ein Pflichtfeld und muss ausgefüllt werden. \\ 
+        \hline
+    \end{tabular}
+    \captionof{table}{Anforderung A4 - Eingabefelder der Seite zum Löschen der Kaufprojekte \label{Tab:Tcr}}
+\end{center}
+
+\subsection[A5 - Eingabefelder der Seite zum Aktualisieren des Projektowners]{A5 - Eingabefelder der Seite zum Aktualisieren des Projektowners}
+
+\begin{center}
+    \begin{tabular}{ |p{0.2\linewidth}|p{0.8\linewidth}| } 
+        \hline
+        \rowcolor{lightgray}
+        \textbf{A5} & \textbf{Eingabefelder der Seite zum Aktualisieren des Projektowners} \\
+        \hline
+        Funktional & Die Seite hat drei Eingabefelder:
+        \begin{itemize}
+            \item Der alte Projektowner (Pflichtfeld)
+            \item Der neue Projektowner (Pflichtfeld)
+            \item Eine oder mehrere SCGs (Optional)
+        \end{itemize} 
+        Pflichtfelder müssen ausgefüllt werden. Optionale Felder müssen keinen Wert beinhalten.\\ 
+        \hline
+    \end{tabular}
+    \captionof{table}{Anforderung A4 - Eingabefelder der Seite zum Aktualisieren des Projektowners \label{Tab:Tcr}}
+\end{center}
+
+\subsection[A6 - Eingabefelder der Seite zum Aktualisieren des Projektmanagers und der Käufergruppe]{A6 - Eingabefelder der Seite zum Aktualisieren des Projektmanagers und der Käufergruppe}
+
+\begin{center}
+    \begin{tabular}{ |p{0.2\linewidth}|p{0.8\linewidth}| } 
+        \hline
+        \rowcolor{lightgray}
+        \textbf{A6} & \textbf{Eingabefelder der Seite zum Aktualisieren des Projektmanagers und der Käufergruppe} \\
+        \hline
+        Funktional & Die Seite hat fünf Eingabefelder:
+        \begin{itemize}
+            \item Der alte Projektmanager (Pflichtfeld)
+            \item Der neue Projektmanager (Pflichtfeld)
+            \item Die alte Käufergruppe (Pflichtfeld)
+            \item Der neue Käufergruppe (Pflichtfeld)
+            \item Eine oder mehrere SCGs (Optional)
+        \end{itemize} 
+        Pflichtfelder müssen ausgefüllt werden.
+       
+        Optionale Felder müssen keinen Wert beinhalten.\\ 
+        \hline
+    \end{tabular}
+    \captionof{table}{Anforderung A6 - Eingabefelder der Seite zum Aktualisieren des Projektmanagers und der Käufergruppe \label{Tab:Tcr}}
+\end{center}
+
+\subsection[A7 - Speichern und Verwerfen Aktionen]{A7 - Speichern und Verwerfen Aktionen}
+
+\begin{center}
+    \begin{tabular}{ |p{0.2\linewidth}|p{0.8\linewidth}| } 
+        \hline
+        \rowcolor{lightgray}
+        \textbf{A7} & \textbf{Speichern und Verwerfen Aktionsleiste} \\
+        \hline
+        Funktional &  Auf jeder Seite des Admin-UIs soll eine Aktionsleiste mit zwei Knöpfen vorhanden sein:
+        \begin{itemize}
+            \item \textbf{Speichern:} Öffnet ein Pop-Up in dem der Nutzer seine Wahl bestätigen muss. Bei Bestätigung wird die jeweilige Aktion der Seite durchgeführt. Der Knopf ist nur Verwendbar, wenn alle Pflichtfelder ausgefüllt sind.
+            \item \textbf{Verwerfen:} Setzt alle Eingabefelder zurück.
+        \end{itemize}\\
+        \hline
+    \end{tabular}
+    \captionof{table}{Anforderung A7 - Speichern und Verwerfen Aktionsleiste \label{Tab:Tcr}}
+\end{center}
+
+\begin{center}
+    \begin{tabular}{ |p{0.2\linewidth}|p{0.8\linewidth}| } 
+        \hline
+        \rowcolor{lightgray}
+        \textbf{A7.1} & \textbf{Speicheraktion auf der Seite zum Löschen der Kaufprojekte} \\
+        \hline
+        Funktional &  Wird die Speicheraktion ausgeführt sollen alle ausgewählten Kaufprojekte in der Datenbank als gelöscht markiert werden und dürfen danach nicht mehr angezeigt werden. \\
+        \hline
+    \end{tabular}
+    \captionof{table}{Anforderung A7.1 - Speicheraktion auf der Seite zum Löschen der Kaufprojekte \label{Tab:Tcr}}
+\end{center}
+
+\begin{center}
+    \begin{tabular}{ |p{0.2\linewidth}|p{0.8\linewidth}| } 
+        \hline
+        \rowcolor{lightgray}
+        \textbf{A7.2} & \textbf{Speicheraktion auf der Seite zum Aktualisieren des Projektowners} \\
+        \hline
+        Funktional &  Wird die Speicheraktion ausgeführt, soll der alte Projektowner mit dem neuen Projektowner, in allen Projekten, ersetzt werden. Diese Aktualisierung soll auf Projekt und Länder -Ebene geschehen.
+
+        Für den Fall, dass eine oder mehrere SCGs mit angegeben wurden, beschränkt sich die Aktualisierung auf Projekte, die mit den angegebenen SCGs übereinstimmen.\\
+        \hline
+    \end{tabular}
+    \captionof{table}{Anforderung A7.2 - Speicheraktion auf der Seite zum Aktualisieren des Projektowners \label{Tab:Tcr}}
+\end{center}
+
+\begin{center}
+    \begin{tabular}{ |p{0.2\linewidth}|p{0.8\linewidth}| } 
+        \hline
+        \rowcolor{lightgray}
+        \textbf{A7.3} & \textbf{Speicheraktion auf der Seite zum Aktualisieren des Projektmanagers und der Käufergruppe} \\
+        \hline
+        Funktional &  Wird die Speicheraktion ausgeführt, soll der alte Projektmanager und die alte Käufergruppe mit dem neuen Projektmanager und der neuen Käufergruppe, in allen Projekten, ersetzt werden. Diese Aktualisierung soll auf Projekt und Länder -Ebene geschehen.
+
+        Für den Fall, dass eine oder mehrere SCGs mit angegeben wurden, beschränkt sich die Aktualisierung auf Projekte, die mit den angegebenen SCGs übereinstimmen.\\
+        \hline
+    \end{tabular}
+    \captionof{table}{Anforderung A7.3 - Speicheraktion auf der Seite zum Aktualisieren des Projektmanagers und der Käufergruppe \label{Tab:Tcr}}
+\end{center}
