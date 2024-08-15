@@ -78,5 +78,28 @@ In TypeScript wird dieses Problem gelöst, indem es den Entwicklern ermöglicht,
 \end{itemize}
 
 \subsection[Unterschiede zwischen JavaScript und TypeScript]{Unterschiede zwischen JavaScript und TypeScript}
+Da TypeScript auf JavaScript aufbaut, gibt es viele Gemeinsamkeiten zwischen den beiden Sprachen.
+Jedoch gibt es zwei wesentliche Punkte, in denen sich die Sprachen grundsätzlich unterscheiden:
 
-\subsection[Vorstellung weiterer verwendeter Technologien und Frameworks]{Vorstellung weiterer verwendeter Technologien und Frameworks}
+\begin{enumerate}
+    \item \textbf{Statische Typisierung} \\
+    In JavaScript werden Variablen dynamisch typisiert und Typen zur Laufzeit überprüft. In TypeScript werden diese statisch typisiert, was es Entwicklern erlaubt, Typen explizit zu deklarieren und zur Komplierzeit zu überprüfen.
+    Dies reduziert die Wahrscheinlichkeit von Typfehlern und verbessert die Codequalität.
+    \begin{lstlisting}
+        // JavaScript
+        let count = 42; // Dynamisch typisiert
+
+        // TypeScript
+        let count: number = 42; // Statisch typisiert
+    \end{lstlisting}
+    \item \textbf{Typanmerkungen und -infernz} \\
+    In TypeScript können Typen explizit angegeben werden oder von der TypeScript-Engine automatisch inferiert werden.
+    Diese Inferenz ermöglicht eine flexible Typisierung, welche sowohl die Sicherheit als auch die Bequemlichkeit erhöht.
+    \begin{lstlisting}
+        let message: string = "Hello, World!"; // Explizite Typanmerkung
+        let count = 42; // Typinferenz: TypeScript erkennt automatisch, dass count vom Typ number ist
+    \end{lstlisting}
+\end{enumerate}
+
+
+\subsection[TypeScript in Verbindung mit dem SAPUI5 Framework]{TypeScript in Verbindung mit dem SAPUI5 Framework}
