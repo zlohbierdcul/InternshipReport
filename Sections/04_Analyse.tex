@@ -1,8 +1,20 @@
-\section{Anforderungen}
+\newpage
+\section{Anforderungsanalyse}
+In diesem Kapitel wird eine kurze Analyse der aktuellen Situation durchgeführt und die Anforderungen an das Admin-UI aufgeführt. Zunächst wird der Ist-Zustand beschrieben, um die Probleme und Herausforderungen zu identifizieren.
+Danach werden die Anforderungen aufgestellt, die zur Lösung des Problems erforderlich sind.
+
+\subsection[Ist-Zustand]{Ist-Zustand}
+In dem aktuellen Projekt gibt es ein Problem mit der Art und Weise, wie Änderungen an den Projektdaten durchgeführt werden.
+Derzeit ist es so, dass jeglich Änderungen ausschließlich über direkte SQL-Abfragen in der Datenbank von einem Entwickler vorgenommen werden können.
+
+Das größte Problem an dieser Herangehensweise ist, dass Nutzer des Systems vollständig auf Entwicker angewiesen sind, um kleine Änderungen durchführen zu können.
+Dies führt zu Verzögerungen und vermeidbarer Arbeit für die Entwickler.
+
+\subsection[Anforderungen]{Anforderungen}
 Dieses Kapitel befasst sich mit den Anforderungen an das Admin-UI, welche von dem Kunden zu Beginn des Projektes bereits verfasst wurden.
 Die Funktionalität aller Seiten des Admin-UIs wurden in diesen Anforderungen festgehalten und dienten dann ebenfalls als Aktzeptanzkriterien.
 
-\subsection[A1 - Reaktionszeit der Anwendung]{A1 - Reaktionszeit der Anwendung}
+\subsubsection[A1 - Reaktionszeit der Anwendung]{A1 - Reaktionszeit der Anwendung}
 
 \begin{center}
     \begin{tabular}{ |p{0.2\linewidth}|p{0.8\linewidth}| } 
@@ -13,10 +25,10 @@ Die Funktionalität aller Seiten des Admin-UIs wurden in diesen Anforderungen fe
         Nicht-Funktional &  Die Anwendung soll in einer angemessenen Zeit antworten.\\ 
         \hline
     \end{tabular}
-    \captionof{table}{Anforderung A1 - Reaktionszeit der Anwendung \label{Tab:Tcr}}
+    \captionof{table}{Anforderung A1 - Reaktionszeit der Anwendung \label{Tab:A1}}
 \end{center}
 
-\subsection[A2 - Sprache der Anwendung]{A2 - Sprache der Anwendung}
+\subsubsection[A2 - Sprache der Anwendung]{A2 - Sprache der Anwendung}
 
 \begin{center}
     \begin{tabular}{ |p{0.2\linewidth}|p{0.8\linewidth}| } 
@@ -27,10 +39,10 @@ Die Funktionalität aller Seiten des Admin-UIs wurden in diesen Anforderungen fe
         Nicht-Funktional &  Die Anwendung soll je nach Standort oder Einstellung des Nutzers in Deutsch oder Englisch angezeigt werden.\\ 
         \hline
     \end{tabular}
-    \captionof{table}{Anforderung A2 - Spache der Anwendung \label{Tab:Tcr}}
+    \captionof{table}{Anforderung A2 - Spache der Anwendung \label{Tab:A2}}
 \end{center}
 
-\subsection[A3 - Inteligente Vorschläge für Eingabefelder]{A3 - Inteligente Vorschläge für Eingabefelder}
+\subsubsection[A3 - Inteligente Vorschläge für Eingabefelder]{A3 - Inteligente Vorschläge für Eingabefelder}
 
 \begin{center}
     \begin{tabular}{ |p{0.2\linewidth}|p{0.8\linewidth}| } 
@@ -43,10 +55,10 @@ Die Funktionalität aller Seiten des Admin-UIs wurden in diesen Anforderungen fe
         Die Vorschläge sollen sich bei der Eingabe oder Löschung von Zeichen aktualisieren. \\ 
         \hline
     \end{tabular}
-    \captionof{table}{Anforderung A4 - Inteligente Vorschläge für Eingabefelder \label{Tab:Tcr}}
+    \captionof{table}{Anforderung A4 - Inteligente Vorschläge für Eingabefelder \label{Tab:A3}}
 \end{center}
 
-\subsection[A4 - Eingabefelder der Seite zum Löschen der Kaufprojekte]{A4 - Eingabefelder der Seite zum Löschen der Kaufprojekte}
+\subsubsection[A4 - Eingabefelder der Seite zum Löschen der Kaufprojekte]{A4 - Eingabefelder der Seite zum Löschen der Kaufprojekte}
 
 \begin{center}
     \begin{tabular}{ |p{0.2\linewidth}|p{0.8\linewidth}| } 
@@ -57,10 +69,10 @@ Die Funktionalität aller Seiten des Admin-UIs wurden in diesen Anforderungen fe
         Funktional & Die Seite hat ein Eingabefeld, in dem eine oder mehrere ProjektIDs, die gelöscht werden sollen, eingetragen werden können. Das Feld ist ein Pflichtfeld und muss ausgefüllt werden. \\ 
         \hline
     \end{tabular}
-    \captionof{table}{Anforderung A4 - Eingabefelder der Seite zum Löschen der Kaufprojekte \label{Tab:Tcr}}
+    \captionof{table}{Anforderung A4 - Eingabefelder der Seite zum Löschen der Kaufprojekte \label{Tab:A4}}
 \end{center}
 
-\subsection[A5 - Eingabefelder der Seite zum Aktualisieren des Projektowners]{A5 - Eingabefelder der Seite zum Aktualisieren des Projektowners}
+\subsubsection[A5 - Eingabefelder der Seite zum Aktualisieren des Projektowners]{A5 - Eingabefelder der Seite zum Aktualisieren des Projektowners}
 
 \begin{center}
     \begin{tabular}{ |p{0.2\linewidth}|p{0.8\linewidth}| } 
@@ -72,17 +84,17 @@ Die Funktionalität aller Seiten des Admin-UIs wurden in diesen Anforderungen fe
         \begin{itemize}
             \item Der alte Projektowner (Pflichtfeld)
             \item Der neue Projektowner (Pflichtfeld)
-            \item Eine oder mehrere SCGs (Optional)
+            \item Eine oder mehrere \acsp{scg} (Optional)
         \end{itemize} 
         Pflichtfelder müssen ausgefüllt werden. 
         
         Optionale Felder müssen keinen Wert beinhalten.\\ 
         \hline
     \end{tabular}
-    \captionof{table}{Anforderung A4 - Eingabefelder der Seite zum Aktualisieren des Projektowners \label{Tab:Tcr}}
+    \captionof{table}{Anforderung A4 - Eingabefelder der Seite zum Aktualisieren des Projektowners \label{Tab:A5}}
 \end{center}
 
-\subsection[A6 - Eingabefelder der Seite zum Aktualisieren des Projektmanagers und der Käufergruppe]{A6 - Eingabefelder der Seite zum Aktualisieren des Projektmanagers und der Käufergruppe}
+\subsubsection[A6 - Eingabefelder der Seite zum Aktualisieren des Projektmanagers und der Käufergruppe]{A6 - Eingabefelder der Seite zum Aktualisieren des Projektmanagers und der Käufergruppe}
 
 \begin{center}
     \begin{tabular}{ |p{0.2\linewidth}|p{0.8\linewidth}| } 
@@ -96,17 +108,17 @@ Die Funktionalität aller Seiten des Admin-UIs wurden in diesen Anforderungen fe
             \item Der neue Projektmanager (Pflichtfeld)
             \item Die alte Käufergruppe (Pflichtfeld)
             \item Der neue Käufergruppe (Pflichtfeld)
-            \item Eine oder mehrere SCGs (Optional)
+            \item Eine oder mehrere \acsp{scg} (Optional)
         \end{itemize} 
         Pflichtfelder müssen ausgefüllt werden.
        
         Optionale Felder müssen keinen Wert beinhalten.\\ 
         \hline
     \end{tabular}
-    \captionof{table}{Anforderung A6 - Eingabefelder der Seite zum Aktualisieren des Projektmanagers und der Käufergruppe \label{Tab:Tcr}}
+    \captionof{table}{Anforderung A6 - Eingabefelder der Seite zum Aktualisieren des Projektmanagers und der Käufergruppe \label{Tab:A6}}
 \end{center}
 
-\subsection[A7 - Speichern und Verwerfen Aktionen]{A7 - Speichern und Verwerfen Aktionen}
+\subsubsection[A7 - Speichern und Verwerfen Aktionen]{A7 - Speichern und Verwerfen Aktionen}
 
 \begin{center}
     \begin{tabular}{ |p{0.2\linewidth}|p{0.8\linewidth}| } 
@@ -121,7 +133,7 @@ Die Funktionalität aller Seiten des Admin-UIs wurden in diesen Anforderungen fe
         \end{itemize}\\
         \hline
     \end{tabular}
-    \captionof{table}{Anforderung A7 - Speichern und Verwerfen Aktionsleiste \label{Tab:Tcr}}
+    \captionof{table}{Anforderung A7 - Speichern und Verwerfen Aktionsleiste \label{Tab:A7}}
 \end{center}
 
 \begin{center}
@@ -133,7 +145,7 @@ Die Funktionalität aller Seiten des Admin-UIs wurden in diesen Anforderungen fe
         Funktional &  Wird die Speicheraktion ausgeführt sollen alle ausgewählten Kaufprojekte in der Datenbank als gelöscht markiert werden und dürfen danach nicht mehr angezeigt werden. \\
         \hline
     \end{tabular}
-    \captionof{table}{Anforderung A7.1 - Speicheraktion auf der Seite zum Löschen der Kaufprojekte \label{Tab:Tcr}}
+    \captionof{table}{Anforderung A7.1 - Speicheraktion auf der Seite zum Löschen der Kaufprojekte \label{Tab:A7.1}}
 \end{center}
 
 \begin{center}
@@ -144,10 +156,10 @@ Die Funktionalität aller Seiten des Admin-UIs wurden in diesen Anforderungen fe
         \hline
         Funktional &  Wird die Speicheraktion ausgeführt, soll der alte Projektowner mit dem neuen Projektowner in allen Projekten ersetzt werden. Diese Aktualisierung soll auf Projekt und Länder -Ebene geschehen.
 
-        Für den Fall, dass eine oder mehrere SCGs mit angegeben wurden, beschränkt sich die Aktualisierung auf Projekte, die mit den angegebenen SCGs übereinstimmen.\\
+        Für den Fall, dass eine oder mehrere \acsp{scg} mit angegeben wurden, beschränkt sich die Aktualisierung auf Projekte, die mit den angegebenen \acsp{scg} übereinstimmen.\\
         \hline
     \end{tabular}
-    \captionof{table}{Anforderung A7.2 - Speicheraktion auf der Seite zum Aktualisieren des Projektowners \label{Tab:Tcr}}
+    \captionof{table}{Anforderung A7.2 - Speicheraktion auf der Seite zum Aktualisieren des Projektowners \label{Tab:A7.2}}
 \end{center}
 
 \begin{center}
@@ -158,8 +170,8 @@ Die Funktionalität aller Seiten des Admin-UIs wurden in diesen Anforderungen fe
         \hline
         Funktional &  Wird die Speicheraktion ausgeführt, soll der alte Projektmanager und die alte Käufergruppe mit dem neuen Projektmanager und der neuen Käufergruppe in allen Projekten ersetzt werden. Diese Aktualisierung soll auf Projekt und Länder -Ebene geschehen.
 
-        Für den Fall, dass eine oder mehrere SCGs mit angegeben wurden, beschränkt sich die Aktualisierung auf Projekte, die mit den angegebenen SCGs übereinstimmen.\\
+        Für den Fall, dass eine oder mehrere \acsp{scg} mit angegeben wurden, beschränkt sich die Aktualisierung auf Projekte, die mit den angegebenen \acsp{scg} übereinstimmen.\\
         \hline
     \end{tabular}
-    \captionof{table}{Anforderung A7.3 - Speicheraktion auf der Seite zum Aktualisieren des Projektmanagers und der Käufergruppe \label{Tab:Tcr}}
+    \captionof{table}{Anforderung A7.3 - Speicheraktion auf der Seite zum Aktualisieren des Projektmanagers und der Käufergruppe \label{Tab:A7.3}}
 \end{center}
