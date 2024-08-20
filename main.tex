@@ -36,7 +36,7 @@
 
 \hypersetup{
     %bookmarks=true,         % show bookmarks bar?
-    unicode=false,          % non-Latin characters in Acrobat’s bookmarks
+    unicode=true,          % non-Latin characters in Acrobat’s bookmarks
     pdftoolbar=true,        % show Acrobat’s toolbar?    pdfmenubar=true,        % show Acrobat’s menu?
     pdffitwindow=false,     % window fit to page when opened
     pdfstartview={FitH},    % fits the width of the page to the window
@@ -64,9 +64,10 @@
 \usepackage{colortbl}
 \usepackage{transparent}
 
-\usepackage[style=apa, backend=biber]{biblatex}
+%\usepackage[style=numeric, backend=biber]{biblatex}
+
 %\usepackage[backend=biber, style=apa, citestyle=authoryear, sorting=nyt]{biblatex}
-%\usepackage[backend=biber, style=ieee, citestyle=numeric, sorting=nyt]{biblatex}
+\usepackage[backend=biber, style=ieee, citestyle=numeric, sorting=nyt]{biblatex}
 %\usepackage[backend=biber, style=ieee, sorting=nyt]{biblatex}
 % Usable sorting styles are:
 % nty = Sort by name, title, year.
@@ -78,14 +79,6 @@
 % ydnt = Sort by year (descending), name, title.
 % none = Do not sort at all. All entries are processed in citation order.
 % debug = Sort by entry key. This is intended for debugging only.
-
-
-% Switch the language
-\ifUseGermanVersion
-    \DeclareLanguageMapping{ngerman}{ngerman-apa}
-\else
-    \DeclareLanguageMapping{english}{english-apa}
-\fi
 
 \addbibresource{biblatex.bib}
 
