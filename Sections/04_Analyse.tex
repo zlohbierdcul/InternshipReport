@@ -5,7 +5,7 @@ Danach werden die Anforderungen aufgestellt, die zur Lösung des Problems erford
 
 \subsection[Ist-Zustand]{Ist-Zustand}
 In dem aktuellen Projekt gibt es ein Problem mit der Art und Weise, wie Änderungen an den Projektdaten durchgeführt werden.
-Derzeit ist es so, dass jeglich Änderungen ausschließlich über direkte \acs{sql}-Abfragen in der Datenbank von einem Entwickler vorgenommen werden können.
+Derzeit ist es so, dass jeglich Änderungen ausschließlich über direkte \gls{sql}-Abfragen in der Datenbank von einem Entwickler vorgenommen werden können.
 
 Das größte Problem an dieser Herangehensweise ist, dass Nutzer des Systems vollständig auf Entwicker angewiesen sind, um kleine Änderungen durchführen zu können.
 Dies führt zu Verzögerungen und vermeidbarer Arbeit für die Entwickler.
@@ -84,7 +84,7 @@ Die Funktionalität aller Seiten des Admin-UIs wurden in diesen Anforderungen fe
         \begin{itemize}
             \item Der alte Projektowner (Pflichtfeld)
             \item Der neue Projektowner (Pflichtfeld)
-            \item Eine oder mehrere \acsp{scg} (Optional)
+            \item Eine oder mehrere \glspl{scg} (Optional)
         \end{itemize} 
         Pflichtfelder müssen ausgefüllt werden. 
         
@@ -108,7 +108,7 @@ Die Funktionalität aller Seiten des Admin-UIs wurden in diesen Anforderungen fe
             \item Der neue Projektmanager (Pflichtfeld)
             \item Die alte Käufergruppe (Pflichtfeld)
             \item Der neue Käufergruppe (Pflichtfeld)
-            \item Eine oder mehrere \acsp{scg} (Optional)
+            \item Eine oder mehrere \glspl{scg} (Optional)
         \end{itemize} 
         Pflichtfelder müssen ausgefüllt werden.
        
@@ -156,7 +156,7 @@ Die Funktionalität aller Seiten des Admin-UIs wurden in diesen Anforderungen fe
         \hline
         Funktional &  Wird die Speicheraktion ausgeführt, soll der alte Projektowner mit dem neuen Projektowner in allen Projekten ersetzt werden. Diese Aktualisierung soll auf Projekt und Länder -Ebene geschehen.
 
-        Für den Fall, dass eine oder mehrere \acsp{scg} mit angegeben wurden, beschränkt sich die Aktualisierung auf Projekte, die mit den angegebenen \acsp{scg} übereinstimmen.\\
+        Für den Fall, dass eine oder mehrere \glspl{scg} mit angegeben wurden, beschränkt sich die Aktualisierung auf Projekte, die mit den angegebenen \glspl{scg} übereinstimmen.\\
         \hline
     \end{tabular}
     \captionof{table}{Anforderung A7.2 - Speicheraktion auf der Seite zum Aktualisieren des Projektowners \label{Tab:A7.2}}
@@ -170,7 +170,7 @@ Die Funktionalität aller Seiten des Admin-UIs wurden in diesen Anforderungen fe
         \hline
         Funktional &  Wird die Speicheraktion ausgeführt, soll der alte Projektmanager und die alte Käufergruppe mit dem neuen Projektmanager und der neuen Käufergruppe in allen Projekten ersetzt werden. Diese Aktualisierung soll auf Projekt und Länder -Ebene geschehen.
 
-        Für den Fall, dass eine oder mehrere \acsp{scg} mit angegeben wurden, beschränkt sich die Aktualisierung auf Projekte, die mit den angegebenen \acsp{scg} übereinstimmen.\\
+        Für den Fall, dass eine oder mehrere \glspl{scg} mit angegeben wurden, beschränkt sich die Aktualisierung auf Projekte, die mit den angegebenen \glspl{scg} übereinstimmen.\\
         \hline
     \end{tabular}
     \captionof{table}{Anforderung A7.3 - Speicheraktion auf der Seite zum Aktualisieren des Projektmanagers und der Käufergruppe \label{Tab:A7.3}}

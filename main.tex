@@ -17,8 +17,6 @@
 \usepackage[utf8]{inputenc}
 
 % ============= Packages =============
-\usepackage{acronym}
-
 % Document information
 \usepackage[
 	pdftitle={\workTitle},
@@ -258,7 +256,12 @@
 % Roman itemization \RM{<Number>}
 \newcommand{\RM}[1]{\MakeUppercase{\romannumeral #1}}
 
+% ============= Glossar ==============
 
+\usepackage[acronym, nogroupskip, nopostdot, nonumberlist, toc, style=super]{glossaries}
+\makenoidxglossaries
+
+\input{Others/Acronyms.tex}
 % ============= Dokumentbeginn =============
 
 \begin{document}
@@ -304,27 +307,29 @@
 
 % References
 \newpage
-\addcontentsline{toc}{chapter}{Bibliography}
+\addcontentsline{toc}{chapter}{Literatur}
 \printbibliography
-
 % Figures
 \newpage
 \addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
 \listoffigures
 % Tables
 \newpage
+
 \addcontentsline{toc}{chapter}{Tabellenverzeichnis}
 \listoftables
 % Listings
 \newpage
 \addcontentsline{toc}{chapter}{Quellcodeverzeichnis}
 \lstlistoflistings
+% Glossar
 \newpage
-% ============================================
+\printnoidxglossary[type=\acronymtype, title=Abkürzungsverzeichnis, toctitle=Abkürzungsverzeichnis]
+\printacronyms
 
-\include{Chapters/05_Acronyms}
 \include{Chapters/04_Apendix}
 
+% ============================================
 
 
 % ============================================
