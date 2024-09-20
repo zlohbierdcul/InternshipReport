@@ -38,3 +38,48 @@ Anhand der Kundenanforderungen und den \gls{ux}-Anforderungen hat wurden von dem
 \end{figure}
 
 \subsection[Software-Design]{Software-Design}
+Im folgenden Kapitel wird das Software-Design des Admin-UI und der dazu gehöhrenden Anwendung etwas näher beschrieben.
+Es bietet einen Überblick über die Architektur der Anwendung, die verwendeten Technologien und die Struktur der Daten.
+
+\subsubsection[Grundlegende Architektur]{Grundlegende Architektur}
+Die grundlegende Architektur der Anwendungen wird in Abbildung \ref{fig:architecture} etwas vereinfacht dargestellt und Komponenten, welche nicht relevant für die Entwicklung des Admin-UIs sind, wurden ausgelassen.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Images/BE_Architecture.png}
+    \caption[Grundlegende Architektur der Anwendungen]{Grundlegende Architektur der Anwendungen}
+    \label{fig:architecture}
+\end{figure}
+Die Architektur ist der Anwendungen ist in Frontend und Backend aufgeteilt und diese Ebenen kommunizieren über ein standartisiertes Protokol miteinander.
+
+\begin{enumerate}
+    \item \textbf{Frontend-Komponenten:}
+    \begin{itemize}
+        \item \textbf{Buying Cockpit - \gls{fe}:} \\
+        Diese Komponente ist mit \gls{sapui5} und JavaScript entwickelt und bildet die Hauptanwendung und ist die Benutzeroberfläche für die Nutzer.
+        \item \textbf{Admin-UI:} \\
+        Dies ist die zu entwickelnde Administrationsoberfläche für das Buying Cockpit und  kann nur von bestimmten Nutzern verwendet werden.
+    \end{itemize} 
+    \item \textbf{Backend-Komponente:}
+    \begin{itemize}
+        \item \textbf{Buying Cockpit - \gls{be}:}
+        Das Backend des Systems basiert auf \gls{cap} und wird mit NodeJS und JavaScript entwickelt.
+        Es stellt die benötigten Daten und Services über standardisierte Schnittstellen beiden Frontend-Anwendungen zur Verfügung.
+    \end{itemize}
+    \item \textbf{Kommunikationsprotokoll:} \\
+    Die Kommunikation zwischen dem Frontend und dem Backend erfolgt über das \textbf{OData-Protokol}. 
+    \gls{odata} ermöglicht den standardisierten Austausch von Daten über HTTP und bietet eine effiziente Möglichkeit, auf Daten zuzugreifen und diese zu manipulieren.
+\end{enumerate}
+\subsubsection[Datenstruktur]{Datenstruktur}
+Im folgenden wird die Datenstruktur für die Anwendungen vereinfacht dargestellt und Attribute, Entitäten und Relationen, welche nicht relevant für das Admin-UI sind, ausgelassen.
+
+In Abbildung \ref{fig:datastructure} sind die drei Entitäten, welche im Admin-UI manipuliert werden sollen, in einen \gls{erm} dargestellt: \\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Images/Datenstruktur.png}
+    \caption[Vereinfachte Darstellung der Datenstruktur]{Vereinfachte Darstellung der Datenstruktur}
+    \label{fig:datastructure}
+\end{figure}
+
+Die Entität \textit{BuyingProjectTableView} ist eine Entität, welche dafür ist das Filtern auf der Übersichtsseite der BuyingCockpit Anwendung zu ermöglichen.
+Daher müssen die Werte aus der \textit{BuyingProject}-Entität mit dieser übereinstimmen und somit immer beide simultan geupdatet werden.
