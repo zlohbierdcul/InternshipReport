@@ -5,10 +5,23 @@ Danach werden die Anforderungen aufgestellt, die zur Lösung des Problems erford
 
 \subsection[Ist-Zustand]{Ist-Zustand}
 In dem aktuellen Projekt gibt es ein Problem mit der Art und Weise, wie Änderungen an den Projektdaten durchgeführt werden.
-Derzeit ist es so, dass jeglich Änderungen ausschließlich über direkte \gls{sql}-Abfragen in der Datenbank von einem Entwickler vorgenommen werden können.
+Derzeit können Änderungen ausschließlich über direkte \gls{sql}-Abfragen in der Datenbank von einem Entwickler vorgenommen werden.
 
-Das größte Problem an dieser Herangehensweise ist, dass Nutzer des Systems vollständig auf Entwicker angewiesen sind, um kleine Änderungen durchführen zu können.
-Dies führt zu Verzögerungen und vermeidbarer Arbeit für die Entwickler.
+Ein Beispiel für diese Daten betrifft Kaufprojekte, bei denen regelmäßig administrative Aufgaben anfallen, wie z.B.:
+
+\begin{itemize}
+    \item Das Löschen von Kaufprojekten, die nicht mehr relevant sind,
+    \item Das Ändern des Verantwortlichen für bestimmte Kaufprojekte, wenn sich Zuständigkeiten im Team ändern.
+\end{itemize}
+
+Das größte Problem an dieser Herangehensweise ist, dass die Nutzer des Systems vollständig auf Entwickler angewiesen sind, um selbst kleinere Änderungen durchführen zu können.
+Dies führt zu unnötigen Verzögerungen im Arbeitsablauf, da die Entwickler nicht immer sofort verfügbar sind. Zudem entsteht für die Entwickler vermeidbare Arbeit, da sie Aufgaben übernehmen müssen, die prinzipiell von den Endnutzern selbst erledigt werden könnten.
+
+Dieses Problem zeigt sich insbesondere in Situationen, in denen schnelle Anpassungen benötigt werden, um auf sich ändernde Anforderungen im Projektgeschäft zu reagieren, etwa wenn kurzfristig ein Kaufprojekt entfernt oder der zuständige Mitarbeiter aktualisiert werden muss.
+
+Um dieses Problem zu lösen, wird in diesem Projekt eine eigenständige Admin-Seite entwickelt.
+Diese Admin-Seite ist eine Erweiterung der bestehenden Anwendung und soll es den Endnutzern ermöglichen, administrative Aufgaben, wie das Löschen oder Bearbeiten von Projektdaten, ohne die Hilfe von Entwicklern durchzuführen.
+So wird die Abhängigkeit von Entwicklern reduziert und der Arbeitsfluss des Kunden effizienter gestaltet.
 
 \subsection[Anforderungen]{Anforderungen}
 Dieses Kapitel befasst sich mit den Anforderungen an das Admin-UI, welche von dem Kunden zu Beginn des Projektes bereits verfasst wurden.
@@ -94,8 +107,6 @@ Die Funktionalität aller Seiten des Admin-UIs wurden in diesen Anforderungen fe
     \end{tabular}
 \end{center}
 
-\newpage
-
 \subsubsection[A6 - Eingabefelder der Seite zum Aktualisieren des Projektmanagers und der Käufergruppe]{A6 - Eingabefelder der Seite zum Aktualisieren des Projektmanagers und der Käufergruppe}
 
 \begin{center}
@@ -119,6 +130,8 @@ Die Funktionalität aller Seiten des Admin-UIs wurden in diesen Anforderungen fe
         \hline
     \end{tabular}
 \end{center}
+
+\newpage
 
 \subsubsection[A7 - Speichern und Verwerfen Aktionen]{A7 - Speichern und Verwerfen Aktionen}
 
@@ -163,6 +176,8 @@ Die Funktionalität aller Seiten des Admin-UIs wurden in diesen Anforderungen fe
         \hline
     \end{tabular}
 \end{center}
+
+\newpage
 
 \begin{center}
     \captionof{table}{Anforderung A7.3 - Speicheraktion auf der Seite zum Aktualisieren des Projektmanagers und der Käufergruppe \label{Tab:A7.3}}
