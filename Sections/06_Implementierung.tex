@@ -63,7 +63,47 @@ Wenn der Benutzer jedoch die benötigte Berechtigung besitzt sollen die Daten ve
 In diesem Abschnitt werden die Implementierungsdetails aus dem vorherigen Abschnitt anhand von Codebeispielen schrittweise erläutert und erklärt.
 
 \subsubsection{Frontend}
+Die Implementierung des Frontends teilt sich in zwei Abschnitte auf. 
+Zum einen die Erstellung der Views, welche die Darstellung der Seite seien werden, und die Erstellung der Controller, zum anderen die Views mit Funktionalität zu versehen. 
 
+\textbf{Erstellung der XML-Views:}
+
+Für die Darstellung wurden, wie in Abbildung \ref{fig:appstructure} bereits dargestellt wurde, vier verschiende \gls{xml}-Views angelegt.
+Die \textit{App.view.xml}, \textit{BuyingManagerPurchasingGroup.view.xml}, \textit{ProjectOwner.view.xml} und die \textit{DeleteBuyingProjects.view.xml}.
+
+Für die App-View wurden drei Hauptkomponenten benötigt.
+Die Kopfzeile mit dem Titel der Seite, die Navigationsleiste zur Navigation zwischen den Unterseiten und die Unterseiten an sich, welche dynamisch mit Hilfe der Naviagtionsleiste angezeigt werden.
+All diese Komponenten wurden innerhalb einer \textit{DynamicPage-Komponente} definiert, welche bereits Funktionalitäten für eine einfahrbare Kopfzeile und Navigationsleiste bietet.
+So konnte die Kopfzeile als eine \textit{DynamicPageTitle und DynamicPageHeader-Komponente} als Titel und Header der DynamicPage hinzugefügt werden.
+Wie das dann im Code für das Admin-UI aussieht, sehen Sie im folgenden Listing:
+
+\begin{lstlisting}[caption={Kopfzeile des App-Views}, language={XML}]
+<f:DynamicPage class="sapUiNoContentPadding">
+    <f:title>
+        <f:DynamicPageTitle>
+            <f:heading>
+                <Title text="{i18n>titHeader}" class="sapUiSmallMarginTop" />
+            </f:heading>
+        </f:DynamicPageTitle>
+    </f:title>
+    <f:header>
+        <f:DynamicPageHeader>
+            <VBox>
+                <Label text="{i18n>lblVersion}" />
+            </VBox>
+        </f:DynamicPageHeader>
+    </f:header>
+    ...
+</f:DynamicPage>
+\end{lstlisting}
+
+Das \textit{text}-Attribut, liefert den Text der in dem Titel und dem Header angezeigt werden.
+Dieser kommt in unserem Fall aus dem \textit{i18n}-Model, welches Text in verschiedenen Sprachen bereitstellt.
+Das \textit{class}-Attribut, ist für das Styling der Elemente verantwortlich. 
+Hier wird eine von \gls{sapui5} vorgefertige Klasse angegeben, um ein einheitliches Aussehen auf der ganzen Seite zu garantieren.
+
+Für die Navigationsleite und die Unterseiten wurden zwei \textit{Panel-Komponenten} verwendet, diese dienen als Kontainer für den Inhalt der Komponenten und haben die Möglichkeit sich ein- und ausklappen zu lassen.
+Die Navigationsleite wurde als eine Liste von \textit{ActionListItems} definiert, welche eine Art Knöpfe sind, die durch Attribute als ausgewählt angezeigt werden können.
 
 \subsection[Herausforderungen und Problemlösungen]{Herausforderungen und Problemlösungen}
 
