@@ -104,6 +104,121 @@ Hier wird eine von \gls{sapui5} vorgefertige Klasse angegeben, um ein einheitlic
 
 Für die Navigationsleite und die Unterseiten wurden zwei \textit{Panel-Komponenten} verwendet, diese dienen als Kontainer für den Inhalt der Komponenten und haben die Möglichkeit sich ein- und ausklappen zu lassen.
 Die Navigationsleite wurde als eine Liste von \textit{ActionListItems} definiert, welche eine Art Knöpfe sind, die durch Attribute als ausgewählt angezeigt werden können.
+Diese \textit{ActionListItems} werden anhand von vordefinerten Routen dynamisch generiert und sind somit jeweils an eine Route, beziehungsweise an eine Unterseite gebunden.
+Durch anklicken eines der \textit{ActionListItems} wird über den \gls{sapui5}-Router das richtige XML-View in den \textit{Panel-Kontainer} für die Unterseiten geladen.
+
+In dem folgenden Listing wird der Code für die beiden \textit{Panel-Komponenten} dargestellt, es wurden jedoch Attribute und Elemente, welche jediglich für das Aussehen der Komonenten zuständig sich, ausgelassen. 
+
+\begin{lstlisting}[caption={Navigationsleisten- und Unterseiten-Kontainer des Admin-UIs}, language={XML}]
+...
+<Panel>
+    <List items="{routes>/routes}">
+        <ActionListItem
+            text="{
+                parts: [
+                    'routes>name'
+                ], formatter: '.formatter.formatNavItemText'
+            }"
+            type="Navigation"
+            navigated="{= ${routes>name} === ${routes>/currentRoute}}"
+            press="onNavItemPress" />
+    </List>
+</Panel>
+<Panel>
+    <NavContainer id="navContainer" width="100%" height="100%" />
+</Panel>
+...
+\end{lstlisting}
+
+Die drei \gls{xml}-Views für die Unterseiten sind alle gleich aufgebaut und verwenden alle dieselben Komonenten zur Darstellung der \textit{Toolbar} zum Speichern der Änderungen und den Eingabefeldern.
+
+Für die Toolbar wird die \textit{Toolbar-Komponente} von \gls{sapui5} verwendet und beinhaltet zwei Knöpfe.
+Ein Knopf zum Speichern und ein Knopf, um alle Eingabefelder zu leeren. 
+Im folgenden Listing wird der Code für die Toolbar, welche auf allen Seiten weitestgehend identisch ist, dargestellt:
+
+\begin{lstlisting}[caption={Toolbar der Unterseiten}, label={lst:toolbar}, language={XML}]
+<Toolbar id="toolbar" design="Solid">
+    <ToolbarSpacer />
+    <Button text="{i18n>btnSaveChanges}" type="Emphasized" press="onSaveChangesPress" />
+    <Button text="{i18n>btnClear}" press="onClearPress" />
+</Toolbar>
+\end{lstlisting}
+
+Die Eingabefelder wurden mit \textit{Input-Komponenten} umgesetzt, da diese bereits Funktionalitäten für intelligente Vorschläge, wie in Anforderung \ref{Tab:A3} beschreiben, besitzen.
+Für eine bessere Formatierung wurde jedes Eingabefeld und dessen Titel, welcher als \textit{Label-Komponente} dargestellt wird, in einer \textit{VBox-Komponente} platziert.
+In dem folgenden Listing wird der Code für das Eingabefeld beispielshaft an einem Eingabefeld auf der ProjectOwner.view.xml Unterseite dargestellt:
+
+\begin{lstlisting}[caption={Eingabefeld für Unterseiten}, language={XML}]
+<VBox width="100%">
+    <Label text="{i18n>lblOldBuyingManager}" required="true" />
+    <Input
+        id="oldBuyingManagerInput"
+        value="{form>/oldBuyingManager}"
+        placeholder="{i18n>txtEmailPlaceholder1}"
+        required="true"
+        suggestionItems="{/AppUsers}"
+        showSuggestion="true"
+        suggest="onSuggest($event, 'user')"
+        suggestionItemSelected="onSuggestionItemSelected">
+        <core:Item key="{id}" text="{id}" />
+    </Input>
+</VBox>
+\end{lstlisting}
+
+Die Attribute \textit{suggest} und \textit{suggestionItemSelected} der Input-Komponente bekommen die Namen von Funktionen übergeben, welche in einem Controller für die Views definiert sind.
+Die Funktion dieser Funktionen ist es die intelligenten Vorschläge anhand der Benutzereingabe anzuzeigen und beim Auswählen eines der Vorschläge diesen Wert für das Feld zu übernehmen.
+Das Attribut \textit{required} ist dafür da anzuzeigen, ob das Eingabefeld ein Pflichfeld ist und es dieses auf \textit{true} gesetzt wird vor dem Speichern überprüft, ob in diesem Feld etwas eingegeben wurde.
+
+\textbf{Erstellung der Controller:}
+Eingie Funktionalitäten sind in allen Unterseiten identisch, daher wurde für diese Funktionen ein BaseController erstellt.
+Funktionen in diesem Contoller, stehen allen Views zur Verfügung, wodurch der Code für diese Funktionalitäten nur ein mal geschreiben werden musste.
+
+Andere Funktionalitäten sind jedoch spezifisch für eine Unterseite oder muss unterschiedlich implementiert werden, da es zum Beispielt unterschiedlich Eingabefelder auf den Seiten gibt.
+Eine dieser Funktionen ist die \textit{onSaveChangesPress}-Funktion aus Listing \ref{lst:toolbar}, die für das Speichern der Eingabefelder zuständig ist.
+
+In dieser Funktion wird jedes Eingabefeld kurz validiert, indem überprüft wird, ob all Pflichtfelder ausgefüllt sind.
+Wenn dies der Fall ist, werden die eingegebenen Werte an, sowie der \gls{api}-Endpunkt, der auf dieser Unterseite aufgerufen werden soll, an eine Funktion in dem BaseController gesendet.
+
+In folgendem Listing wird die onSaveChangesPress Funktion dargestellt:
+\begin{lstlisting}[caption={onSaveChangesPress Funktion}]
+onSaveChangesPress(event: Button$PressEvent): void {
+    const formModel = this.getModel<JSONModel>("form"),
+            isFormValid = this.validateInputFields(this.allInputIDs);
+
+    if (!isFormValid) {
+        event.getSource().setEnabled(false);
+        return;
+    }
+
+    if (!formModel) {
+        return;
+    }
+
+    const {
+        oldProjectOwner,
+        newProjectOwner,
+        SCGs
+    } = formModel.getData();
+
+    this.createSaveChangesMessageBox(
+        "/ProjectOwnerMassChange", 
+        {                
+            oldProjectOwner,
+            newProjectOwner,
+            acgs: SCGs
+        },
+        this.allInputIDs
+    );
+}
+\end{lstlisting}
+
+Die \textit{createSaveChangesMessageBox}-Funktion ist eine Funktion im BaseController, welche eine \textit{MessageBox-Komponente} erstellt, um den Nutzer um eine weitere Bestätigung zu fragen.
+Bestätigt der Benutzer seine Entscheidung, wird in der \textit{createSaveChangesMessageBox}-Funktion die \textit{submitChanges}-Funktion aufgerufen.
+Diese ist dafür verantwortlich die eingegebenen Daten an das Backend zu senden.
+Um das zu tun wird in dem \gls{odata}-Model, welches mit dem Backend verbunden ist, ein neuer Eintrag erstellt.
+Dafür benötigt es die Namen der Tabelle, sowie die Daten, die in die Tabelle geschrieben werden sollen.
+
+
 
 \subsection[Herausforderungen und Problemlösungen]{Herausforderungen und Problemlösungen}
 
