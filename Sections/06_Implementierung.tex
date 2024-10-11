@@ -170,16 +170,13 @@ Die Funktion dieser Funktionen ist es die intelligenten Vorschläge anhand der B
 Das Attribut \textit{required} ist dafür da anzuzeigen, ob das Eingabefeld ein Pflichfeld ist und es dieses auf \textit{true} gesetzt wird vor dem Speichern überprüft, ob in diesem Feld etwas eingegeben wurde.
 
 \textbf{Erstellung der Controller:}
+
 Eingie Funktionalitäten sind in allen Unterseiten identisch, daher wurde für diese Funktionen ein BaseController erstellt.
 Funktionen in diesem Contoller, stehen allen Views zur Verfügung, wodurch der Code für diese Funktionalitäten nur ein mal geschreiben werden musste.
 
 Andere Funktionalitäten sind jedoch spezifisch für eine Unterseite oder muss unterschiedlich implementiert werden, da es zum Beispielt unterschiedlich Eingabefelder auf den Seiten gibt.
 Eine dieser Funktionen ist die \textit{onSaveChangesPress}-Funktion aus Listing \ref{lst:toolbar}, die für das Speichern der Eingabefelder zuständig ist.
 
-In dieser Funktion wird jedes Eingabefeld kurz validiert, indem überprüft wird, ob all Pflichtfelder ausgefüllt sind.
-Wenn dies der Fall ist, werden die eingegebenen Werte an, sowie der \gls{api}-Endpunkt, der auf dieser Unterseite aufgerufen werden soll, an eine Funktion in dem BaseController gesendet.
-
-In folgendem Listing wird die onSaveChangesPress Funktion dargestellt:
 \begin{lstlisting}[caption={onSaveChangesPress Funktion}]
 onSaveChangesPress(event: Button$PressEvent): void {
     const formModel = this.getModel<JSONModel>("form"),
@@ -190,9 +187,7 @@ onSaveChangesPress(event: Button$PressEvent): void {
         return;
     }
 
-    if (!formModel) {
-        return;
-    }
+    if (!formModel) return;
 
     const {
         oldProjectOwner,
@@ -212,16 +207,72 @@ onSaveChangesPress(event: Button$PressEvent): void {
 }
 \end{lstlisting}
 
-Die \textit{createSaveChangesMessageBox}-Funktion ist eine Funktion im BaseController, welche eine \textit{MessageBox-Komponente} erstellt, um den Nutzer um eine weitere Bestätigung zu fragen.
-Bestätigt der Benutzer seine Entscheidung, wird in der \textit{createSaveChangesMessageBox}-Funktion die \textit{submitChanges}-Funktion aufgerufen.
-Diese ist dafür verantwortlich die eingegebenen Daten an das Backend zu senden.
+In dieser Funktion werdern die Eingabefeld validiert, indem überprüft wird, ob all Pflichtfelder ausgefüllt sind.
+Wenn dies der Fall ist, wird mit den Werten der Eingabefelder ein neuer Tabelleneintrag im Backend erstellt.
+Der Tabellenname ist für die verschiedenen Unterseiten unterschiedlich und daher wird dieser zusammen mit den Daten an die \textit{createSaveChangesMessageBox}-Funktion im BaseController gesendet.
+Diese Funktion ist im folgenden Listing zu sehen:
+
+\begin{lstlisting}[caption={createSaveChangesMessageBox Funktion}]
+protected createSaveChangesMessageBox(sPath: string, formData: object, inputIDs: string[]): void {
+    const resourceBundle = this.getI18nResourceBundle();
+    if (!resourceBundle) {
+        return;
+    }
+
+    const saveAction = resourceBundle.getText("btnSave") || "Save";
+    MessageBox.confirm(
+        resourceBundle.getText("txtConfirmDialog") || "",
+        {
+            title: resourceBundle.getText("titConfirmDialog") || "",
+            actions: [saveAction, MessageBox.Action.CANCEL],
+            emphasizedAction: saveAction,
+            onClose: (action: string) => {
+                if (action === saveAction) {
+                    this.submitChanges(sPath, formData, inputIDs);
+                }
+            }
+        }
+    );
+} 
+\end{lstlisting}
+
+Dies ist eine Funktion im BaseController, welche eine \textit{MessageBox-Komponente} erstellt, um den Nutzer um eine weitere Bestätigung zu bitten.
+Bestätigt der Benutzer seine Entscheidung, wird die \textit{submitChanges}-Funktion aufgerufen.
+
+\begin{lstlisting}[caption={submitChanges Funktion}]
+protected submitChanges(sPath: string, oData: object, inputIDs: string[]): void {
+    const   viewModel = this.getModel<JSONModel>("objectView"),
+            model = this.getModel<ODataModel>();
+
+    if (!model || !viewModel) return;
+
+    viewModel.setProperty("/busy", true);
+    model.create(sPath, oData,
+        {
+            success: () => {
+                this.clearAllFields(inputIDs);
+                this.onSubmitSuccess();
+            },
+            error: this.onSubmitError.bind(this),
+        }
+    );
+} 
+\end{lstlisting}
+
+Diese Funktion ist dafür verantwortlich die übergebenen Daten an das Backend zu senden.
 Um das zu tun wird in dem \gls{odata}-Model, welches mit dem Backend verbunden ist, ein neuer Eintrag erstellt.
 Dafür benötigt es die Namen der Tabelle, sowie die Daten, die in die Tabelle geschrieben werden sollen.
+Ist das Erstellen des neuen Eintrages erfolgreich, werden alle Eingabefelder geleert und es wird eine Meldung angezeigt, dass das Speichern erfolgreich war.
+Im Fall, dass das Erstellen nicht erfolgreich war wird eine Errornachricht angezeigt.
+
+\subsubsection[Backend]{Backend}
+
+Nachdem die Daten von dem Frontend an das Backend gesendet wurden müssen diese Dort noch verarbeitet werden und die von den Änderungen betroffenen Tabellen müssen bearbeitet werden.
+Die Beschreibung dieser Funktionalität wird im folgenden schrittweise beschrieben.
+
 
 
 
 \subsection[Herausforderungen und Problemlösungen]{Herausforderungen und Problemlösungen}
-
-\subsection[Darstellung aufgetretener Herausforderungen]{Darstellung aufgetretener Herausforderungen}
 
 \subsection[Beschreibung der Lösungsansätze]{Beschreibung der Lösungsansätze}
