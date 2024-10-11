@@ -270,6 +270,32 @@ Im Fall, dass das Erstellen nicht erfolgreich war wird eine Errornachricht angez
 Nachdem die Daten von dem Frontend an das Backend gesendet wurden müssen diese Dort noch verarbeitet werden und die von den Änderungen betroffenen Tabellen müssen bearbeitet werden.
 Die Beschreibung dieser Funktionalität wird im folgenden schrittweise beschrieben.
 
+Sobald im Frontend eine Anfrage an das Backend gesendet wird, um einen neuen Eintrag in der Tabelle zu erstellen, wird diese Anfrage von SAP CAP abgefangen. Dies geschieht in der srv.on Funktion, welche bestimmte Events abfangen kann. Sie hat drei Parameter, das Event, welches abgefangen werden soll, den Namen der Entität und eine Handlerfunktion, die aufgeführt wird, wenn eine Anfrage abgefangen wurde.
+
+In diesem Fall ist das Event das “CREATE” Event, welches beim Erstellen eines neuen Eintrags aufgerufen wird. Der Name der Entität ist abhängig von der Unterseite von der die Anfrage gestellt wurde. Die Handlerfunktion hat zwei Parameter, die Anfrage, in der die Daten die gesendet wurden sowie weitere Informationen über die Anfrage, wie den Benutzer, der die Anfrage gestellt hat, stehen.
+
+Im folgenden wird das Codebeispiel nur für eine der Funktionalitäten dargestellt, da der einzige Unterschied die aufgerufene Funktion, ist.
+```
+srv.on('CREATE', 'PurchasingGroupMassChange', async (req, next) => {
+        const whitelistedMassChangeUsers = process.env.ADMIN_UI_USERS ? process.env.ADMIN_UI_USERS.split(',') : []
+        if(whitelistedMassChangeUsers.indexOf(req.user.id.toLowerCase()) < 0) {
+            req.error(400, 'Invalid user')
+        } else {
+            try {
+                await projectService.purchasingGroupMassChange(req)
+                return await next()
+            } catch (e) {
+                logAndThrowError(log, 'performing purchasing group mass change', e, req.data)
+            }
+        }
+    })
+```
+Caption: srv.on Funktion zum Abfangen der Anfrage
+
+In unserer Handlerfunktion ist das erste was geprüft wird, ob der Benutzer der die Anfrage gestellt hat, die passenden Rechte für eine solche Anfrage besitzt. Ist dies nicht der Fall, wird eine Errornachricht zurück gesendet. Besitzt der Benutzer die passenden Rechte, wird eine Funktion aufgerufen, welche die Validierung und Verarbeitung der Daten übernimmt.
+
+In dieser Funktion werden zuerst die Daten Validiert. Dafür wird überprüft, ob alle benötigten Daten angekommen sind und ob diese das korrekte Format besitzen. Falls dies nicht der Fall ist, wird eine Errornachricht zurück gesendet. Nachdem die Validierung abgeschlossen ist und es zu keinem Error kam, werden die betroffenen Entitäten aktualisiert. 
+
 
 
 
